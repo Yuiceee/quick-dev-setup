@@ -10,4 +10,4 @@
 ## 快速使用
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/quick-dev-setup/main/install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Yuiceee/quick-dev-setup/main/install.sh)"

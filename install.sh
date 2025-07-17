@@ -56,13 +56,17 @@ echo "🔧 配置 Rust 镜像..."
     echo 'export RUSTUP_DIST_SERVER="https://rsproxy.cn"'
     echo 'export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"'
 } >> "$rc_file"
-source "$rc_file"
+# 移除这里的 source 命令，避免在 bash 环境下加载 zsh 配置
+# source "$rc_file"
 
 
 # ---------------------
 # 安装 Rust
 # ---------------------
 echo "🦀 安装 Rust (使用 rsproxy)..."
+# 临时设置环境变量
+export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 curl --proto '=https' --tlsv1.2 -sSf https://rsproxy.cn/rustup-init.sh | sh -s -- -y
 source "$HOME/.cargo/env"
 
@@ -158,7 +162,8 @@ if ! grep -q 'PIXI_HOME' "$rc_file"; then
         echo 'export PIXI_HOME="$HOME/.pixi"'
         echo 'export PATH="$PIXI_HOME/bin:$PATH"'
     } >> "$rc_file"
-    source "$rc_file"
+    # 移除 source 命令，避免兼容性问题
+    # source "$rc_file"
 else
     echo "✅ $rc_file 已经存在 PIXI_HOME，跳过重复添加"
 fi
@@ -168,6 +173,9 @@ fi
 # 安装全局工具 ruff 和 uv
 # ---------------------
 echo "📦 安装 ruff 和 uv..."
+# 临时添加 pixi 到 PATH
+export PIXI_HOME="$HOME/.pixi"
+export PATH="$PIXI_HOME/bin:$PATH"
 pixi global install ruff uv
 
 
