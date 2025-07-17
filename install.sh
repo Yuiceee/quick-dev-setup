@@ -5,7 +5,7 @@ echo "🚀 开始安装 pixi + uv 开发环境..."
 echo ""
 
 # ---------------------
-# 检测 shell 类型，找对 rc 文件
+# 检测 shell 类型
 # ---------------------
 current_shell=$(basename "$SHELL")
 case "$current_shell" in
@@ -26,7 +26,7 @@ echo "📄 将修改你的环境文件: $rc_file"
 
 
 # ---------------------
-# 智能代理检查
+# 代理检查
 # ---------------------
 check_rsproxy() {
     curl --connect-timeout 5 -s https://rsproxy.cn > /dev/null
@@ -56,8 +56,8 @@ echo "🔧 配置 Rust 镜像..."
     echo 'export RUSTUP_DIST_SERVER="https://rsproxy.cn"'
     echo 'export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"'
 } >> "$rc_file"
-# 移除这里的 source 命令，避免在 bash 环境下加载 zsh 配置
-# source "$rc_file"
+
+
 
 
 # ---------------------
@@ -183,7 +183,7 @@ pixi global install ruff uv
 # 是否安装 Starship
 # ---------------------
 echo ""
-read -p "⭐️ 是否需要安装 Starship Shell 美化 (y/n)? " need_starship
+read -p "⭐️ 是否需要安装 Starship 美化你的终端 (y/n)? " need_starship
 if [[ "$need_starship" == "y" || "$need_starship" == "Y" ]]; then
     platform=$(uname -s)
     echo "🚀 安装 Starship..."
