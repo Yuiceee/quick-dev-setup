@@ -97,7 +97,7 @@ echo "🔧 配置 Git 强制使用 ssh..."
 git config --global url."git@github.com:".insteadOf "https://github.com/"
 
 mkdir -p ~/.ssh
-cat > ~/.ssh/config <<EOF
+cat >> ~/.ssh/config <<EOF
 Host github.com
     Hostname ssh.github.com
     Port 443
