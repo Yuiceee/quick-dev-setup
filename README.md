@@ -1,4 +1,11 @@
-# setup1: pixi + uv
+# 开发环境快速设置
+
+##  zsh及其插件
+
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Yuiceee/quick-dev-setup/main/terminal_setup_install.sh)"
+
+```
 
 ## Pixi + uv 环境快速一键安装脚本
 
@@ -14,10 +21,5 @@
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Yuiceee/quick-dev-setup/main/install.sh)"
 
-
-
-##  zsh及其插件
-
-```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Yuiceee/quick-dev-setup/main/terminal_setup_install.sh)"
+```
 
