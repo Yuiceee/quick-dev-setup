@@ -23,3 +23,53 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Yuiceee/quick-dev-setup/
 
 ```
 
+
+
+## 常用软件安装
+
+### 系统工具
+```bash
+# 更新包管理器
+apt update
+
+# 安装终端复用器
+apt install tmux
+
+# 安装磁盘使用分析工具
+cargo install du-dust
+```
+
+### GPU监控工具
+```bash
+# 使用uv安装nvitop
+uv add global nvitop
+
+# 或使用pip安装
+pip install nvitop
+```
+
+### AI编程助手
+```bash
+# 安装Claude Code
+npm install -g @anthropic-ai/claude-code
+
+# 安装OpenAI Codex
+npm install -g @openai/codex@latest
+```
+
+## 网络代理
+
+### Clash代理安装
+参考项目：[clash-for-linux-install](https://github.com/nelvko/clash-for-linux-install)
+
+```bash
+# 下载并安装clash
+git clone --branch master --depth 1 https://gh-proxy.org/https://github.com/nelvko/clash-for-linux-install.git \
+  && cd clash-for-linux-install \
+  && bash install.sh
+```
+
+### 配置文档
+- [Codex安装与配置](https://docs.ikuncode.cc/deploy/codex#🐧-linux-平台)
+- [Claude Code安装与配置](https://docs.ikuncode.cc/deploy/claude-code#🐧-linux-平台)
+
