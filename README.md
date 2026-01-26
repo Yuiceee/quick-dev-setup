@@ -21,9 +21,10 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Yuiceee/quick-dev-setup/
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Yuiceee/quick-dev-setup/main/install.sh)"
 
+# 安装磁盘使用分析工具
+cargo install du-dust
+
 ```
-
-
 
 ## 常用软件安装
 
@@ -35,8 +36,6 @@ apt update
 # 安装终端复用器
 apt install tmux
 
-# 安装磁盘使用分析工具
-cargo install du-dust
 ```
 
 ### GPU监控工具
@@ -48,8 +47,28 @@ uv add global nvitop
 pip install nvitop
 ```
 
+### 设置缓存路径
+写到环境变量里
+```bash
+# 设置uv缓存路径
+export UV_CACHE_DIR=~/.cache/uv
+
+# 设置pixi缓存路径
+export PIXI_CACHE_DIR=~/.cache/pixi
+
+```
+
+
+
 ### AI编程助手
 ```bash
+# 安装npm
+# 添加 NodeSource 仓库
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+# 安装 Node.js
+sudo apt-get install -y nodejs
+
+
 # 安装Claude Code
 npm install -g @anthropic-ai/claude-code
 

@@ -57,7 +57,8 @@ else
     curl --proto '=https' --tlsv1.2 -sSf https://rsproxy.cn/rustup-init.sh | sh -s -- -y
 fi
 source "$HOME/.cargo/env"
-
+# 配置cargo bin目录到PATH
+echo "export PATH=\"$HOME/.cargo/bin:\$PATH\" " >> "$rc_file"
 # 配置 cargo 镜像
 if [ "$CAN_ACCESS_OFFICIAL" = false ]; then
     echo "🔧 配置 cargo 镜像"
@@ -70,13 +71,12 @@ registry = "sparse+https://rsproxy.cn/index/"
 EOF
 fi
 
-# 配置 Git SSH (网络受限时)
-if [ "$CAN_ACCESS_OFFICIAL" = false ]; then
-    echo "🔧 配置 Git SSH"
-    git config --global url."git@github.com:".insteadOf "https://github.com/"
-    mkdir -p ~/.ssh
-    echo -e "Host github.com\n    Hostname ssh.github.com\n    Port 443\n    User git" >> ~/.ssh/config
-fi
+# 无论如何配置一下
+echo "🔧 配置 Git SSH"
+git config --global url."git@github.com:".insteadOf "https://github.com/"
+mkdir -p ~/.ssh
+echo -e "Host github.com\n    Hostname ssh.github.com\n    Port 443\n    User git" >> ~/.ssh/config
+
 
 # 安装 pixi
 if [ "$CAN_ACCESS_OFFICIAL" = true ]; then
@@ -131,6 +131,7 @@ else
     export PIXI_HOME="$HOME/.pixi"
     export PATH="$PIXI_HOME/bin:$PATH"
 fi
+source "$HOME/.bashrc" 2>/dev/null || source "$HOME/.zshrc" 2>/dev/null || true
 pixi global install ruff uv
 
 # 可选安装 Starship
