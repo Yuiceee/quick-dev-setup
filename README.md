@@ -36,6 +36,9 @@ apt update
 # 安装终端复用器
 apt install tmux
 
+# 容器环境运行systemd等
+npm install -g pm2
+
 ```
 
 ### GPU监控工具
@@ -45,7 +48,26 @@ uv add global nvitop
 
 # 或使用pip安装
 pip install nvitop
+
+# 直接使用
+uvx nvitop 
+pipx run nvitop
 ```
+### 安装zsh插件  
+
+```bash
+# 历史命令实时提示
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# 命令语法高亮
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+在zshrc中添加插件
+```bash
+# 启用插件
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+```
+
+
 
 ### 设置缓存路径
 写到环境变量里
