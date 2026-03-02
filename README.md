@@ -110,6 +110,22 @@ git clone --branch master --depth 1 https://gh-proxy.org/https://github.com/nelv
   && bash install.sh
 ```
 
+
+
+但最后在zshrc中记得配置以下内容，默认不开启
+
+``` shell
+# clashctl START
+# 加载 clashctl 命令
+. /root/clashctl/scripts/cmd/clashctl.sh
+# 自动开启代理环境
+# watch_proxy
+# 若 clash/mihomo 未运行，清除代理变量
+clashstatus >&/dev/null || _unset_system_proxy
+# clashctl END
+
+```
+
 ### 配置文档
 - [Codex安装与配置](https://docs.ikuncode.cc/deploy/codex#🐧-linux-平台)
 - [Claude Code安装与配置](https://docs.ikuncode.cc/deploy/claude-code#🐧-linux-平台)
