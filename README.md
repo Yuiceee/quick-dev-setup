@@ -44,14 +44,15 @@ npm install -g pm2
 ### GPU监控工具
 ```bash
 # 使用uv安装nvitop
-uv add global nvitop
-
-# 或使用pip安装
-pip install nvitop
+uv tool install nvitop
+echo 'export PATH="/root/.local/bin:$PATH"' >> ~/.zshrc
 
 # 直接使用
 uvx nvitop 
 pipx run nvitop
+
+
+
 ```
 ### 安装zsh插件  
 
